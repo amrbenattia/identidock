@@ -1,0 +1,19 @@
+services:
+  identidock:
+    build: .
+    # image: amrbenattia/identidock:0.1
+    ports:
+      - "5000:5000"
+    environment:
+      ENV: DEV
+    volumes:
+      - ./app:/app
+    links:
+      - dnmonster
+      - redis
+
+  dnmonster:
+    image: amouat/dnmonster:1.0
+
+  redis:
+    image: redis:latest
